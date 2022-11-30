@@ -85,6 +85,15 @@
             "config/packages/debug.yaml"
         ]
     },
+    "symfony/discord-notifier": {
+        "version": "6.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.2",
+            "ref": "1bbc2f7c212346491efde98bf55a3f689056ed3f"
+        }
+    },
     "symfony/flex": {
         "version": "2.2",
         "recipe": {
@@ -212,6 +221,15 @@
         "files": [
             "config/packages/security.yaml"
         ]
+    },
+    "symfony/slack-notifier": {
+        "version": "6.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "5.2",
+            "ref": "192bc241a3095c6861353e5a7a652ad35659ca92"
+        }
     },
     "symfony/translation": {
         "version": "6.0",
