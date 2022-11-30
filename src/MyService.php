@@ -2,7 +2,6 @@
 
 namespace App;
 
-use App\Controller\EntityFinderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class MyService implements EntityFinderInterface
