@@ -1,14 +1,22 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello MovieController!{% endblock %}
+{% block title %}Movie : {{ movie.title }}{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Movie : {{ movie.title }}</h1>
+    <div class="example-wrapper">
+        {% if movie is not null %}
 
-    <ul>
-        <li>Released at: {{ movie.releasedAt|date('Y M d') }}</li>
-        <li>Genres : {{ movie.genres|join(', ') }}</li>
-    </ul>
-</div>
+            <h1 class="mb-5">Movie : {{ movie.title }}</h1>
+
+            <img src="{{ movie.poster }}" alt="{{ movie.title }}" class="float-end" />
+            <ul>
+                <li>Id : {{ movie.id }}</li>
+                <li>Released At : {{ movie.releasedAt|date('d M Y') }}</li>
+                <li>Country : {{ movie.country }}</li>
+                <li>Genre : {{ movie.genres|join(', ') }}</li>
+            </ul>
+        {% else %}
+            <h1>Movie not found</h1>
+        {% endif %}
+    </div>
 {% endblock %}

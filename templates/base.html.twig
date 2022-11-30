@@ -17,9 +17,9 @@
         <header>
             {% block header %}
                 {{ include('navbar/_navbar.html.twig', {currentRoute: app.request.attributes.get('_route')}, with_context = false) }}
-            {% endblock header %}
+            {% endblock %}
         </header>
-        <main>
+        <main class="container mt-5">
             {% block body %}{% endblock %}
         </main>
     </body>
