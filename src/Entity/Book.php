@@ -34,7 +34,7 @@ class Book
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $plot = null;
 
-    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Comment::class, cascade: ['persist'], fetch: 'EAGER', orphanRemoval: true)]
+    #[ORM\OneToMany(mappedBy: 'book', targetEntity: Comment::class, cascade: ['persist'], fetch: 'EXTRA_LAZY', orphanRemoval: true)]
     private Collection $comments;
 
     public function __construct()
