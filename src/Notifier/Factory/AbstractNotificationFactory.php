@@ -2,7 +2,6 @@
 
 namespace App\Notifier\Factory;
 
-use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\DependencyInjection\Attribute\TaggedIterator;
 use Symfony\Component\Notifier\Notification\Notification;
 
