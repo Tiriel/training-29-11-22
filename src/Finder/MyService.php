@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\Finder;
 
+use App\Finder\EntityFinderInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
 final class MyService implements EntityFinderInterface

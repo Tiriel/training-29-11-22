@@ -1,12 +1,12 @@
 <?php
 
-namespace App;
+namespace App\Finder;
 
 use Psr\Log\LoggerInterface;
 use Symfony\Component\DependencyInjection\Attribute\AsDecorator;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
-#[AsDecorator(decorates: 'App\MyService')]
+#[AsDecorator(decorates: 'App\Finder\MyService')]
 class TraceableMyService implements EntityFinderInterface
 {
     private readonly bool $isLogged;
