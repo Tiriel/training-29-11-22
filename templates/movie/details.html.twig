@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Movie : {{ movie.title }}{% endblock %}
+{% block title %}Movie : {{ movie.title ?? 'Not found' }}{% endblock %}
 
 {% block body %}
     <div class="example-wrapper">
-        {% if movie is not null %}
+        {% if movie is not empty %}
 
             <h1 class="mb-5">Movie : {{ movie.title }}</h1>
 

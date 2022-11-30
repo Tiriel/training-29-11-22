@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Movie;
+use App\OmdbApi\Consumer\OmdbApiConsumer;
+use App\OmdbApi\Transformer\GenreTransformer;
+use App\OmdbApi\Transformer\MovieTransformer;
 use App\Repository\MovieRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,9 +16,8 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     #[Route('', name: 'index')]
-    public function index(EntityFinderInterface $finder): Response
+    public function index(): Response
     {
-        $movie = $finder->find(Movie::class, 1);
         return $this->render('movie/index.html.twig', [
             'controller_name' => 'Movie Index',
         ]);
@@ -29,6 +31,20 @@ class MovieController extends AbstractController
 
         return $this->render('movie/details.html.twig', [
             'movie' => $movie,
+        ]);
+    }
+
+    #[Route('/omdb/{title}', name: 'omdb', methods: ['GET'])]
+    public function omdb(string $title, OmdbApiConsumer $consumer, MovieTransformer $movieTransformer, GenreTransformer $genreTransformer): Response
+    {
+        $data = $consumer->fetch(OmdbApiConsumer::MODE_TITLE, $title);
+        $movie = $movieTransformer->transform($data);
+        foreach (explode(', ', $data['Genre']) as $genre) {
+            $movie->addGenre($genreTransformer->transform($genre));
+        }
+
+        return $this->render('movie/details.html.twig', [
+            'movie' => $movie
         ]);
     }
 }
