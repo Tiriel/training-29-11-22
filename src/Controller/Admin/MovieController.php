@@ -5,6 +5,8 @@ namespace App\Controller\Admin;
 use App\Entity\Movie;
 use App\Form\MovieType;
 use App\Repository\MovieRepository;
+use App\Security\Voter\MovieVoter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,6 +23,7 @@ class MovieController extends AbstractController
         ]);
     }
 
+    #[IsGranted('ROLE_ADMIN')]
     #[Route('/new', name: 'app_admin_movie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, MovieRepository $movieRepository): Response
     {
@@ -51,6 +54,7 @@ class MovieController extends AbstractController
     #[Route('/{id}/edit', name: 'app_admin_movie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Movie $movie, MovieRepository $movieRepository): Response
     {
+        $this->denyAccessUnlessGranted(MovieVoter::EDIT, $movie);
         $form = $this->createForm(MovieType::class, $movie);
         $form->handleRequest($request);
 
