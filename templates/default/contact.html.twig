@@ -1,15 +1,18 @@
 {% extends 'base.html.twig' %}
+{% import 'macro/_forms.html.twig' as forms %}
 
 {% block title %}Hello DefaultController!{% endblock %}
 
 {% block body %}
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Contact</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/benjamin/Dev/sl/formations/sensiotvbis/src/Controller/DefaultController.php'|file_link(0) }}">src/Controller/DefaultController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/benjamin/Dev/sl/formations/sensiotvbis/templates/default/index.html.twig'|file_link(0) }}">templates/default/index.html.twig</a></code></li>
-    </ul>
+    {{ form_start(form) }}
+        {{ form_row(form.name, {'label': 'Your name'}) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.message) }}
+        {{ forms.button('Send Message') }}
+    {{ form_end(form) }}
 </div>
 {% endblock %}

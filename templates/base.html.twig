@@ -22,5 +22,11 @@
         <main class="container mt-5">
             {% block body %}{% endblock %}
         </main>
+        <aside>
+            {{ render_esi(controller('App\\Controller\\MovieController::decades')) }}
+        </aside>
+        {#<footer id="react_footer"></footer>
+        {{ dump() }}
+    {{ encore_entry_script_tags('react') }}#}
     </body>
 </html>

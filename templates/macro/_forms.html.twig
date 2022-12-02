@@ -1,0 +1,3 @@
+{% macro button(message = 'Send', type = 'submit', class = 'primary') %}
+    <button type="{{ type }}" class="btn btn-{{ class }}">{{ message }}</button>
+{% endmacro %}

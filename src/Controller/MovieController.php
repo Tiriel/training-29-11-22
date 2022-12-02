@@ -44,4 +44,11 @@ class MovieController extends AbstractController
             'movie' => $movie,
         ]);
     }
+
+    public function decades()
+    {
+        return $this->render('decades.html.twig', [
+            'decades' => [],
+        ]);
+    }
 }
